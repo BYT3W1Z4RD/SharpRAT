@@ -7,6 +7,9 @@ A Basic Proof Of Concept Remote Administration Tool Written In C# With Functioni
 -Commandline Commands
 
 
+-Live Dynamically Updating Help List
+
+
 -Custom Server Listener
 
 
@@ -32,6 +35,9 @@ A Basic Proof Of Concept Remote Administration Tool Written In C# With Functioni
 
 
 **Client Payload:**
+
+
+-help
 
 
 -close
