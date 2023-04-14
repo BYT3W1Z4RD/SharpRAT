@@ -7,30 +7,60 @@ A Basic Proof Of Concept Remote Administration Tool Written In C# With Functioni
 -Commandline Commands
 
 
--Command Prompt Commands
+-Custom Server Listener
 
 
--Check Privilege Level
+-Autoreconnecting Client
 
 
--Fodhelper UAC Bypass Exploit
+-DLL Plugin System To Load Modules In Memory Instead Of Hardcoding Into Payload
 
 
 ## **Planned Features:**
 
 
--Many More Commands
+-Multithreaded Client Handling
 
 
--Plugin System To Load Modules In Memory Instead Of Hardcoding Into Payload
+-WinForms GUI
+
+
+-Many More Plugins
+
+
+## **Current Plugins:**
+
+
+**Client Payload:**
+
+
+-close
+
+
+-reconnect
+
+
+**System Control:**
+
+
+-shutdown
+
+
+**Post Exploitation:**
+
+
+-privs
+
+
+-uac
 
 
 ## **Antivirus Detection:**
 
 Undetected By All Antivirus As of:
-26 March 2023
+April 2023
 
-<img src='https://antiscan.me/images/result/U2VxTHy9a3C6.png'>
+<img src='https://antiscan.me/images/result/CSjDvnlC3kvP.png'>
 
 ## **Disclaimer:**
 
