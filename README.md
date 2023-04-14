@@ -4,10 +4,10 @@ A Basic Proof Of Concept Remote Administration Tool Written In C# With Functioni
 ## **Current Features:**
 
 
--Commandline Commands
+-Commandline Interface
 
 
--Live Dynamically Updating Help List
+-Live Dynamically Updating Help Menu
 
 
 -Custom Server Listener
