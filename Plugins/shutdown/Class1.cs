@@ -19,7 +19,6 @@ namespace Plugin
             myProcess.StartInfo = psi;
             myProcess.Start();
             myProcess.WaitForExit();
-            Registry.CurrentUser.DeleteSubKeyTree(@"Software\Classes\ms-settings\shell\open\command");
             return response;
         }
     }
