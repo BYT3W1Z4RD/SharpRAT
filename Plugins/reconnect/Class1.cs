@@ -1,21 +1,31 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 
-public class ReconnectPlugin : MarshalByRefObject
+namespace Plugin
 {
-    public static void Execute()
+    public class Plugin : MarshalByRefObject
     {
-        // Restart the current process
-        Process.Start(new ProcessStartInfo
+        public string Execute()
         {
-            FileName = Environment.GetCommandLineArgs()[0],
-            Arguments = string.Join(" ", Environment.GetCommandLineArgs().Skip(1)),
-            UseShellExecute = false,
-            CreateNoWindow = true
-        });
+            // Get the current process ID
+            int currentProcessId = Process.GetCurrentProcess().Id;
 
-        // Exit the current process
-        Environment.Exit(0);
+            // Use taskkill command to force the process to terminate
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.FileName = "cmd.exe";
+            psi.Arguments = $"/c taskkill /f /pid {currentProcessId} && start \"\" \"{Process.GetCurrentProcess().MainModule.FileName}\"";
+            psi.WindowStyle = ProcessWindowStyle.Hidden;
+            Process killProcess = new Process();
+            killProcess.StartInfo = psi;
+            killProcess.Start();
+            killProcess.WaitForExit();
+
+            // Exit the current process
+            Environment.Exit(0);
+
+            return "Restarting remote client...";
+        }
     }
 }
